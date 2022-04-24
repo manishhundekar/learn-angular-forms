@@ -13,7 +13,7 @@ export class ApiService {
   }
 
   addUser(user: any) {
-    return this.http.post('localhost:8000/user', {user});
+    return this.http.post('http://localhost:5001/user/add', {user});
   }
 
 }
