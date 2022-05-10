@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
@@ -10,10 +10,14 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'my-app';
 
   constructor(private appService: ApiService) {}
+
+  ngOnInit(): void {
+    this.getAllUsers();
+  }
 
   userForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -38,7 +42,8 @@ export class AppComponent {
 
   getAllUsers() {
     this.appService.getUsers().pipe(takeUntil(this.destroy$)).subscribe((users : any) => {
-        this.users = users;
+      console.log(users)  
+      this.users = users;
     });
   }
 

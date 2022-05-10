@@ -23,4 +23,23 @@
       </form>
     </div>
     </div>
+    <table class="table" id='tab'>
+      <thead>
+      <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let e of users;">
+          <td>{{ e.id }}</td>
+          <td>{{ e.firstName }}</td>
+          <td>{{ e.lastName }}</td>
+          <td>{{ e.email }}</td>
+          
+      </tr>
+      </tbody>
+  </table>
 </div>
